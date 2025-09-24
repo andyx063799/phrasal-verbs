@@ -1,0 +1,82 @@
+<!-- El proyecto no esta hecho desde cero, usa partes de logica de mis otros proyectos, pero tiene partes hechas desde cero. -->
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./styles/styles.css">
+    <title>Simulador Phrasal Verbs Express</title>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>Simulador Phrasal Verbs</h1>
+            <p class="subtitle">Practica para tu examen - Los primeros 20 phrasal verbs</p>
+            <p class="subtitle">Este proyecto esta hecho con la base del de quiz verbs.</p>
+        </div>
+
+        <div class="controls">
+            <button class="btn btn-primary" onclick="startExamMode()">Modo Examen</button>
+            <button class="btn btn-secondary" onclick="startPracticeMode()">Modo Práctica</button>
+            <button class="btn btn-success" onclick="showStudyGuide()">Guía de Estudio</button>
+        </div>
+
+        <!-- Modo examen xd -->
+        <div id="examMode" class="quiz-section">
+            <div class="card">
+                <div class="progress-bar">
+                    <div class="progress-fill" id="progressBar"></div>
+                </div>
+                <div class="question-counter" id="questionCounter">Pregunta 1 de 10</div>
+                <div class="question" id="question"></div>
+                <div class="input-group">
+                    <label for="phrasalAnswer">Escribe el phrasal verb:</label>
+                    <input type="text" id="phrasalAnswer" placeholder="Ej: bring up, Bring Up, BRING UP (cualquier formato)">
+                </div>
+                <div class="input-group">
+                    <label for="exampleAnswer">Escribe una oración de ejemplo:</label>
+                    <input type="text" id="exampleAnswer" placeholder="Ej: She brought up an interesting topic">
+                </div>
+                <button class="btn btn-primary" onclick="checkAnswer()">Verificar Respuesta</button>
+                <div id="feedback" class="feedback" style="display:none;"></div>
+            </div>
+        </div>
+
+        <!-- Modo Practica -->
+        <div id="practiceMode" class="quiz-section">
+            <div class="card">
+                <h2 style="text-align: center; margin-bottom: 20px; color: #667eea;">Modo Práctica - Todos los Phrasal Verbs</h2>
+                <div class="practice-mode" id="practiceCards"></div>
+            </div>
+        </div>
+
+        <!-- Guia de Studio -->
+        <div id="studyGuide" class="quiz-section">
+            <div class="card">
+                <h2 style="text-align: center; margin-bottom: 20px; color: #667eea;">Guía de Estudio</h2>
+                <div id="studyContent"></div>
+            </div>
+        </div>
+
+        <!-- Resultados -->
+        <div id="results" class="quiz-section">
+            <div class="card">
+                <div class="score-section">
+                    <h2 style="color: #667eea; margin-bottom: 20px;"> ¡Examen Completado!</h2>
+                    <div class="score" id="finalScore">0/10</div>
+                    <p style="font-size: 1.1rem; color: #555; margin-bottom: 20px;" id="scoreMessage"></p>
+                    <button class="btn btn-primary" onclick="startExamMode()"> Intentar de Nuevo</button>
+                    <button class="btn btn-secondary" onclick="showStudyGuide()"> Revisar Guía</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <div class="footer">
+        <p>&copy; 2025 Simulador Phrasal Verbs. Hecho por Andre.</p>
+        <p> Este proyecto usa dos bases desarrolladas por mi, el de quiz verbs y el de simulador de examen.</p>
+    </div>
+    <script src="./js/index.js"></script>
+</body>
+</html>
