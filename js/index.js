@@ -143,6 +143,7 @@
             const question = examQuestions[currentQuestion];
             document.getElementById('questionCounter').textContent = `Pregunta ${currentQuestion + 1} de ${examQuestions.length}`;
             document.getElementById('question').innerHTML = `<strong>Significado:</strong> ${question.meaning}`;
+            document.getElementById('structure').innerHTML = `<strong>Estructura de Oraciones: Sujeto + Phrasal Verb (+ complemento)</strong>`;
             
             // - Para actualizar la barra de progreso
             const progress = ((currentQuestion) / examQuestions.length) * 100;
@@ -304,6 +305,14 @@
                     <p style="color: #555; line-height: 1.8;">
                         <strong>Te darán:</strong> El significado en español<br>
                         <strong>Debes escribir:</strong> El phrasal verb en inglés + Una oración de ejemplo
+                    </p>
+                </div>
+
+                <br>
+                <div style="background: #f8f9fa; padding: 20px; border-radius: 10px; border-left: 4px solid #667eea;">
+                    <h3 style="color: #667eea; margin-bottom: 15px;">Estructura de Oraciones:</h3>
+                    <p style="color: #555; line-height: 1.8;">
+                        <strong>Sujeto + Phrasal Verb (+ complemento)</strong><br>
                     </p>
                 </div>
             `;
