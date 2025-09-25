@@ -3,7 +3,7 @@
             {
                 phrasal: "bring up",
                 meaning: "mencionar, sacar (un tema)",
-                example: "She brought up an interesting point during the meeting."
+                example: "She bring up an interesting point during the meeting."
             },
             {
                 phrasal: "carry out",
@@ -179,7 +179,7 @@
             } else {
                 feedback.className = 'feedback incorrect';
                 let message = `Incorrecto.<br><strong>Phrasal verb correcto:</strong> ${examQuestions[currentQuestion].phrasal}<br><strong>Ejemplo modelo:</strong> ${examQuestions[currentQuestion].example}`;
-                
+
                 if (normalizedUserPhrasal !== normalizedCorrectPhrasal && userExample.length === 0) {
                     message += '<br><br>Recuerda escribir tanto el phrasal verb como un ejemplo.';
                 } else if (normalizedUserPhrasal !== normalizedCorrectPhrasal) {
@@ -187,14 +187,16 @@
                 } else if (userExample.length === 0) {
                     message += '<br><br>No olvides escribir un ejemplo.';
                 }
-                
+
                 feedback.innerHTML = message;
                 document.querySelector('.card').classList.add('shake');
                 setTimeout(() => {
                     document.querySelector('.card').classList.remove('shake');
                 }, 500);
+                // No permitir avanzar si la respuesta no es correcta
+                return;
             }
-            
+
             const button = document.querySelector('#examMode button');
             button.textContent = currentQuestion === examQuestions.length - 1 ? 'Ver Resultados' : 'Siguiente Pregunta';
             button.onclick = nextQuestion;
