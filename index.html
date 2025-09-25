@@ -17,7 +17,7 @@
 
         <div class="controls">
             <button class="btn btn-primary" onclick="startExamMode()">Modo Examen</button>
-            <button class="btn btn-secondary" onclick="startPracticeMode()">Modo Práctica</button>
+            <button class="btn btn-secondary" onclick="startPracticeMode()">Lista de Phrasal Verbs</button>
             <button class="btn btn-success" onclick="showStudyGuide()">Guía de Estudio</button>
         </div>
 
@@ -38,14 +38,16 @@
                     <input type="text" id="exampleAnswer" placeholder="Ej: She brought up an interesting topic">
                 </div>
                 <button class="btn btn-primary" onclick="checkAnswer()">Verificar Respuesta</button>
-                <div id="feedback" class="feedback" style="display:none;"></div>
+            <button class="btn btn-third" onclick="shufflePhrasal()">Mezclar Phrasal Verbs</button>
+            <div id="notification" style="display:none; margin-top:10px; text-align:center; font-weight:bold;"></div>
+            <div id="feedback" class="feedback" style="display:none;"></div>
             </div>
         </div>
 
         <!-- Modo Practica -->
         <div id="practiceMode" class="quiz-section">
             <div class="card">
-                <h2 style="text-align: center; margin-bottom: 20px; color: #667eea;">Modo Práctica - Todos los Phrasal Verbs</h2>
+                <h2 style="text-align: center; margin-bottom: 20px; color: #667eea;">Todos los Phrasal Verbs</h2>
                 <div class="practice-mode" id="practiceCards"></div>
             </div>
         </div>

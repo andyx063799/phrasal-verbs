@@ -106,6 +106,7 @@
         let currentQuestion = 0;
         let score = 0;
         let examQuestions = [];
+        let examInProgress = false;
 
         // - Esta funcion va a ocultar todas las secciones xd
         function hideAllSections() {
@@ -118,12 +119,18 @@
         function startExamMode() {
             hideAllSections();
             document.getElementById('examMode').classList.add('active');
-            
-            // - Basicamente selecciona 10 preguntas aleatorias usando sort y slice, ademas de math.random xd
+
+            // Si ya hay un examen en progreso, continuar donde se quedó
+            if (examInProgress && examQuestions.length > 0 && currentQuestion < examQuestions.length) {
+                showQuestion();
+                return;
+            }
+
+            // Si no hay examen en progreso o ya terminó, reiniciar
             examQuestions = [...phrasalVerbs].sort(() => 0.5 - Math.random()).slice(0, 10);
             currentQuestion = 0;
             score = 0;
-            
+            examInProgress = true;
             showQuestion();
         }
 
@@ -193,6 +200,32 @@
             button.onclick = nextQuestion;
         }
 
+        // - Esto lo agregue para mezclar los phrasal verbs en modo examen o practica
+        function shufflePhrasal() {
+            // - Para saber si funciono, una notificacion que avisa que se mezclaron con exito.
+            function showNotification(msg) {
+                const notif = document.getElementById('notification');
+                notif.textContent = msg;
+                notif.style.display = 'block';
+                notif.style.background = '#e0f7fa';
+                notif.style.color = '#00796b';
+                notif.style.borderRadius = '8px';
+                notif.style.padding = '8px 16px';
+                setTimeout(() => {
+                    notif.style.display = 'none';
+                }, 1800);
+            }
+            if (document.getElementById('examMode').classList.contains('active') && examQuestions.length > 0) {
+                examQuestions.sort(() => 0.5 - Math.random());
+                currentQuestion = 0;
+                showQuestion();
+                showNotification('¡Preguntas del examen mezcladas!');
+            } else {
+                phrasalVerbs.sort(() => 0.5 - Math.random());
+                showNotification('¡Phrasal verbs mezclados! Puedes comenzar el examen o modo práctica.');
+            }
+        }
+
         function nextQuestion() {
             currentQuestion++;
             showQuestion();
@@ -205,14 +238,17 @@
         function showResults() {
             hideAllSections();
             document.getElementById('results').classList.add('active');
-            
+
             const finalScore = document.getElementById('finalScore');
             const scoreMessage = document.getElementById('scoreMessage');
-            
+
             finalScore.textContent = `${score}/${examQuestions.length}`;
-            
+
             const percentage = (score / examQuestions.length) * 100;
-            
+
+            // Marcar que el examen terminó
+            examInProgress = false;
+
             if (percentage >= 90) {
                 scoreMessage.textContent = '¡Excelente! Estás muy bien preparado para el examen. ';
                 scoreMessage.style.color = '#00b894';

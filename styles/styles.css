@@ -64,6 +64,11 @@
             color: #667eea;
         }
 
+        .btn-third {
+            background: linear-gradient(45deg, #00b894, #00a085);
+            color: white;
+        }
+
         .btn-success {
             background: linear-gradient(45deg, #00b894, #00a085);
             color: white;
